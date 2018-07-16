@@ -1,6 +1,7 @@
 package formulier_studenten;
 
 import java.sql.*;
+import java.util.*;
 
 public class Formulier_Studenten {
 
@@ -9,8 +10,39 @@ public class Formulier_Studenten {
     public static void main(String[] args) {
 
         Formulier_Studenten formulier = new Formulier_Studenten();
-
+        
+        //formulier.getID();
         formulier.getConnection();
+        //System.out.println(getID());
+        
+         
+    }
+    
+    public static String getID(){
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Student nummer");
+        String id = scanner.nextLine();
+        System.out.println("Student nummer is " + id);
+        return id;
+    }
+    
+    public static String getMedestudent(){
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Medestudent");
+        String medestudent = scanner.nextLine();
+        System.out.println("Medestudent is " + medestudent);
+        return medestudent;
+    } 
+    
+    public static String getOverig(){
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Overig");
+        String overig = scanner.nextLine();
+        System.out.println("Overig is " + overig);
+        return overig;
     }
 
     public void getConnection() {
@@ -23,16 +55,12 @@ public class Formulier_Studenten {
 
             conn = DriverManager.getConnection(url, username, password);
             System.out.println("Connected");
-
+            
             Student student = new Student();
-
-            student.stud_nr = "0954321";
-            student.voornaam = "Jan Smit";
-            student.tussenvoegsel = "Volendam";
-            student.achternaam = "HAVO";
-            student.geboortedatum = Date.valueOf("1990-5-31");
-            student.geslacht = "M";
-            student.nationaliteit = "Nederlands";
+            
+            student.id = getID();
+            student.medestudent = getMedestudent();
+            student.overig = getOverig();
             
             student.insert(conn);
 
