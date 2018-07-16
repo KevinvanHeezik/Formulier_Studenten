@@ -10,12 +10,9 @@ public class Student {
     String medestudent;
     String overig;
 
-    void insert(Connection conn) throws Exception {
-        // the mysql insert statement
+    void update(Connection conn) throws Exception {
         String query = "UPDATE klassenindeling.studenten SET Medestudent = ?, Overig = ? WHERE Studenten_Nummer = ?;";
-                //+ " values (?, ?, ?)";
 
-        // create the mysql insert preparedstatement
         PreparedStatement preparedStmt = conn.prepareStatement(query);
         preparedStmt.setString(3, id);
         preparedStmt.setString(2, overig);

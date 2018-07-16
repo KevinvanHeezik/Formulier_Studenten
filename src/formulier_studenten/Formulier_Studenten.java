@@ -11,11 +11,7 @@ public class Formulier_Studenten {
 
         Formulier_Studenten formulier = new Formulier_Studenten();
         
-        //formulier.getID();
         formulier.getConnection();
-        //System.out.println(getID());
-        
-         
     }
     
     public static String getID(){
@@ -62,7 +58,7 @@ public class Formulier_Studenten {
             student.medestudent = getMedestudent();
             student.overig = getOverig();
             
-            student.insert(conn);
+            student.update(conn);
 
         } catch (Exception e) {
             System.out.println(e);
